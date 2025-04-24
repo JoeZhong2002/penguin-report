@@ -1,0 +1,37 @@
+
+---
+title: "Penguin Classification Report"
+format: html
+---
+
+# 简介
+
+本报告基于 palmerpenguins 数据集，展示如何使用 k 近邻模型对企鹅种类进行预测分析。数据处理、建模与评估步骤已分别封装成脚本并由 Makefile 管理，报告仅展示最终结果。
+
+# 数据摘要
+
+```{r}
+library(tidyverse)
+summary_stats <- read_csv("results/summary_stats.csv")
+summary_stats
+```
+
+# 箱型图：喙长度分布
+
+```{r}
+knitr::include_graphics("results/bill_length_plot.png")
+```
+
+# 模型评估结果
+
+```{r}
+library(tidymodels)
+conf_mat_res <- readRDS("results/confusion_matrix.rds")
+conf_mat_res
+```
+
+# 结论
+
+- 数据清洗完成后共计若干条观测数据
+- 模型通过 k 近邻算法构建，评估结果如上
+- 后续可尝试不同模型、调整参数或探索更多变量
